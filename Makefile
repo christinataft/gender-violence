@@ -24,10 +24,22 @@ endif
 requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+	$(PYTHON_INTERPRETER) -m spacy download es_core_news_sm
 
 ## Make Dataset
 data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py
+
+# Generate features
+features:
+	$(PYTHON_INTERPRETER) src/features/metadata_features.py
+# Train model
+train: features
+	$(PYTHON_INTERPRETER) src/models/train_model.py
+
+# Test model
+test:
+	$(PYTHON_INTERPRETER) src/models/test_model.py
 
 ## Delete all compiled Python files
 clean:

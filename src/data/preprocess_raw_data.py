@@ -35,7 +35,7 @@ def get_id(link):
 def preprocess():
     """ Function to preprocess the raw spreadsheet
     """
-    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
     paths = ['train', 'test']
     for p in paths:
         file_path = str(PARENT_DIR.joinpath("data/raw/spreadsheet_%s.csv" % p))

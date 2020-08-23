@@ -215,7 +215,7 @@ def download_extract(file_id, service, parent_dir):
 def get_text():
     # parameters
     URL = "https://docs.google.com/uc?export=download"
-    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
     CLIENT_SECRETS = str(PARENT_DIR.joinpath("client_secret.json"))
     SCOPES = ['https://www.googleapis.com/auth/drive']
     CREDENTIALS = service_account.Credentials.from_service_account_file(

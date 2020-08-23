@@ -24,7 +24,7 @@ SEED = 92
 # 0. Importing and cleaning the data
 #####################################
 
-PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
 # import text
 text_path = str(PARENT_DIR.joinpath("data/raw/text.json"))
 with open(text_path) as json_file:

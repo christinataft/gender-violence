@@ -29,7 +29,7 @@ def get_spreadsheet():
         - Train
         - Test
     """
-    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+    PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
     SECRETS_PATH = str(PARENT_DIR.joinpath("client_secret.json"))
     SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1uAi-Yfq" \
                       "-rJl_cqQaVe9Fv1rLlBJcmEtDpUB0NTOrLAs/edit#gid=625331269"

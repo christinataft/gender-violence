@@ -5,7 +5,7 @@ import os
 import pickle
 from pathlib import Path
 
-PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
 df = pd.read_csv(str(PARENT_DIR.joinpath(
     "data/processed/metadata_train.csv")), index_col=0)
 # We will focus exclusively on cases of gender violence
