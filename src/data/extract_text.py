@@ -255,6 +255,9 @@ def get_text():
 
     # save results
     df_final = pd.DataFrame(text_id.items(), columns=['file_id', 'text'])
+    df_problems = df_final.dropna()
+    df_problems.to_csv(str(PARENT_DIR.joinpath("data/raw/files_problems.csv")))
+
     df_final.to_json(str(PARENT_DIR.joinpath("data/raw/text.json")),
                      orient="records")
     print("Text successfully extracted from files and saved locally")
