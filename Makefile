@@ -28,6 +28,8 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
+	mkdir data
+	mkdir data/raw data/processed data/interim
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py
 
 # Generate features
