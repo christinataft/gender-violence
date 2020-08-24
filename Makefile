@@ -44,6 +44,7 @@ test:
 	$(PYTHON_INTERPRETER) src/models/test_model.py
 
 # Predict probabilities for each type of violence
+predict:
 	$(PYTHON_INTERPRETER) src/models/predict_model.py
 
 ## Delete all compiled Python files
