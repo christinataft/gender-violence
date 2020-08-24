@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, \
 # 0. Importing and cleaning the data
 #####################################
 
-PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[2]
+PARENT_DIR = Path(os.path.basename(__file__)).resolve().parents[0]
 # import text
 text_path = str(PARENT_DIR.joinpath("data/raw/text.json"))
 with open(text_path) as json_file:
@@ -179,9 +179,12 @@ predictions = pd.DataFrame(predictions, index=X.index)
 ####################################################
 # 4. Evaluate model
 ####################################################
+
 y_path = str(PARENT_DIR.joinpath("data/processed/target_vars_test.csv"))
 y = pd.read_csv(y_path, index_col=0)
 results = predictions.join(y)
+results.dropna(inplace=True)
+print(len(results))
 
 for var in target_vars:
     y_test = results[var].astype(int)

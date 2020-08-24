@@ -1,9 +1,47 @@
 gender-violence
 ==============================
 
-This project aims to explore how gender violence can be predicted using text from complaints
+Este proyecto busca entender de qué forma se puede utilizar el texto de las 
+denuncias que se reciben en un juzgado para identificar la ocurrencia de
+ diversos tipos de violencia de género. [Esta presentación](reports/presentation.pdf) 
+ explica la motivación del proyecto, la aproximación metodológica y los
+  resultados principales.
+ 
+ El repositorio contiene todo el código necesario para replicar los
+  resultados que se presentan. Estando en el directorio del proyecto, se debe
+   correr el siguiente comando en la terminal para generar los datos:
+ 
+ ```
+make data
+```
+Este proceso tarda un tiempo debido a extracción del texto de los archivos
+. Una vez generados los datos, es posible entrenar los modelos. Esto se puede
+ hacer simplemente con el comando en la terminal:
+ 
+  ```
+make train
+```
+El repositorio ya contiene los modelos, vectorizadores e imputadores
+ utilizados pero al correr este comando se volverán a generar estos archivos
+ . Es posible, además, hacer una prueba final a estos modelos estimados. Esto
+  se logra con:
+  
+   ```
+make test
+```
 
-Project Organization
+Finalmente, es posible generar un archivo **.csv** con las probabilidades
+ estimadas para cada una de las denuncias en la base de datos de Google Drive
+ . Para hacer esto, solo es necesario correr:
+ 
+  ```
+make predictions
+```
+
+El proyecto está organizado con el formato que propone [Cookie Cutter Data
+ Science](https://drivendata.github.io/cookiecutter-data-science/)
+
+Organización del proyecto 
 ------------
 
     ├── LICENSE
@@ -15,13 +53,10 @@ Project Organization
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── models             <- Models, vectorizers, imputers
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
+    ├── notebooks          <- Jupyter notebooks exploring the project
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
@@ -39,15 +74,12 @@ Project Organization
     │   │   └── make_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
+    │   │   └── metadata_features.py
     │   │
     │   ├── models         <- Scripts to train models and then use trained models to make
     │   │   │                 predictions
     │   │   ├── predict_model.py
     │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 

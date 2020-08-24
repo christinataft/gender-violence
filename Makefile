@@ -43,6 +43,9 @@ train: features
 test:
 	$(PYTHON_INTERPRETER) src/models/test_model.py
 
+# Predict probabilities for each type of violence
+	$(PYTHON_INTERPRETER) src/models/predict_model.py
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
