@@ -12,8 +12,9 @@ denuncias que se reciben en un juzgado para identificar la ocurrencia de
   3. Modelo completo:  [Notebook](notebooks/3.1-YM-final-model.ipynb) y [script](src/models/complete_classification.py)
  
  El repositorio contiene todo el código necesario para replicar los
-  resultados que se presentan. Estando en el directorio del proyecto, se debe
-   correr el siguiente comando en la terminal para generar los datos:
+  resultados que se presentan. **Para poder correr el código que se presenta a continuación se necesita tener una Service Account de Google con la API de Google Drive activada. Los datos de esta cuenta deben almacenarse en el directorio del proyecto con el nombre "client_secret.json"**. 
+  
+  Estando en el directorio del proyecto, se debe correr el siguiente comando en la terminal para generar los datos:
  
  ```
 make data
