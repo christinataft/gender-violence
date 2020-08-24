@@ -3,9 +3,13 @@ gender-violence
 
 Este proyecto busca entender de qué forma se puede utilizar el texto de las 
 denuncias que se reciben en un juzgado para identificar la ocurrencia de
- diversos tipos de violencia de género. [Esta presentación](reports/presentation.pdf) 
+ diversos tipos de violencia de género. [Esta presentación](reports/presentacion.pdf) 
  explica la motivación del proyecto, la aproximación metodológica y los
-  resultados principales.
+  resultados principales. Los notebooks y scripts principales son:
+  
+  1. Predicción presencia de violencia de género: [Notebook](notebooks/2.1-YM-gender-violence.ipynb) y [script](src/models/gender_violence_classification.py)
+  2. Preddicción tipo de violencia: [Notebook](notebooks/2.2-YM-types-of-violence.ipynb) y [script](src/models/violence_type_classification.py)
+  3. Modelo completo:  [Notebook](notebooks/3.1-YM-final-model.ipynb) y [script](src/models/complete_classification.py)
  
  El repositorio contiene todo el código necesario para replicar los
   resultados que se presentan. Estando en el directorio del proyecto, se debe
@@ -14,7 +18,7 @@ denuncias que se reciben en un juzgado para identificar la ocurrencia de
  ```
 make data
 ```
-Este proceso tarda un tiempo debido a extracción del texto de los archivos
+Este proceso tarda un tiempo largo debido a que es necesario extraer el texto de los archivos
 . Una vez generados los datos, es posible entrenar los modelos. Esto se puede
  hacer simplemente con el comando en la terminal:
  
@@ -22,7 +26,7 @@ Este proceso tarda un tiempo debido a extracción del texto de los archivos
 make train
 ```
 El repositorio ya contiene los modelos, vectorizadores e imputadores
- utilizados pero al correr este comando se volverán a generar estos archivos
+ utilizados. Al correr este comando se volverán a generar estos archivos
  . Es posible, además, hacer una prueba final a estos modelos estimados. Esto
   se logra con:
   
@@ -37,9 +41,11 @@ Finalmente, es posible generar un archivo **.csv** con las probabilidades
   ```
 make predictions
 ```
+Este comando se puede correr sin necesidad de haber re entrenado el modelo. Solo es necesario haber producido los datos (**make data**).
+
 
 El proyecto está organizado con el formato que propone [Cookie Cutter Data
- Science](https://drivendata.github.io/cookiecutter-data-science/)
+ Science](https://drivendata.github.io/cookiecutter-data-science/).
 
 Organización del proyecto 
 ------------
@@ -60,8 +66,7 @@ Organización del proyecto
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
+    ├── reports            <- Main presentation with results and methodology
     │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
