@@ -214,7 +214,7 @@ predictions = {}
 for var in target_vars:
     model = complete_model['gridcv'][var]['fitted_model']
     col_name = str(var + "_pred")
-    predictions[col_name] = model.predict_proba(X)
+    predictions[col_name] = model.predict_proba(X)[:, 1]
 
 predictions = pd.DataFrame(predictions, index=X.index)
 predictions.to_csv(str(PARENT_DIR.joinpath("data/predictions.csv")),
