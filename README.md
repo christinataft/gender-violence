@@ -1,55 +1,58 @@
 gender-violence
 ==============================
 
-Este proyecto busca entender de qué forma se puede utilizar el texto de las 
-denuncias que se reciben en un juzgado para identificar la ocurrencia de
- diversos tipos de violencia de género. [Esta presentación](reports/presentacion.pdf) 
- explica la motivación del proyecto, la aproximación metodológica y los
-  resultados principales. Los notebooks y scripts principales son:
+## Project Description 
+
+This project aims to understand how the text from judicial complainst can be used to predict the presence of different types of gender violence in the complaint [This presentation (in Spanish)](reports/presentacion.pdf) explains the motivation, methodological approach and main results of the project. The [src](src) folder contains all the scripts for gathering the data, extracting the text, processing the text, crafting features and building models. The notebooks and scripts containing the most relevant models are:
   
-  1. Predicción presencia de violencia de género: [Notebook](notebooks/2.1-YM-gender-violence.ipynb) y [script](src/models/gender_violence_classification.py)
-  2. Preddicción tipo de violencia: [Notebook](notebooks/2.2-YM-types-of-violence.ipynb) y [script](src/models/violence_type_classification.py)
-  3. Modelo completo:  [Notebook](notebooks/3.1-YM-final-model.ipynb) y [script](src/models/complete_classification.py)
+  1. Prediction of gender violence: [Notebook](notebooks/2.1-YM-gender-violence.ipynb) y [script](src/models/gender_violence_classification.py)
+  2. Preddiction of the different types of gender violence: [Notebook](notebooks/2.2-YM-types-of-violence.ipynb) y [script](src/models/violence_type_classification.py)
+  3. Complete model:  [Notebook](notebooks/3.1-YM-final-model.ipynb) y [script](src/models/complete_classification.py)
  
- El repositorio contiene todo el código necesario para replicar los
-  resultados que se presentan. **Para poder correr el código que se presenta a continuación se necesita tener una Service Account de Google con la API de Google Drive activada. Los datos de esta cuenta deben almacenarse en el directorio del proyecto con el nombre "client_secret.json"**. 
-  
-  Estando en el directorio del proyecto, se debe correr el siguiente comando en la terminal para generar los datos:
+ The repository contains all the code necessary to replicate the models and results. **However, in order to actually run all the code it is necessary for the user to have a Google Service Account with Google's Drive API activated. The key to this account must be stored in the project's directory as "client_secret.json" .**
+ 
+ ## Gather the data
+
+ While on the project's directory, you should run the following command on the terminal in order to extract the data from Google Drive:
  
  ```
 make data
 ```
-Este proceso tarda un tiempo largo debido a que es necesario extraer el texto de los archivos
-. Una vez generados los datos, es posible entrenar los modelos. Esto se puede
- hacer simplemente con el comando en la terminal:
- 
+
+This process will take some time because it extracts the text from all the PDFs stored in the database.
+
+## Train the model
+
+Once the data has been generated, it is possible to train several models to predict the presence and the type of gender violence. This is done by running the following command on the terminal:
+
   ```
 make train
 ```
-El repositorio ya contiene los modelos, vectorizadores e imputadores
- utilizados. Al correr este comando se volverán a generar estos archivos
- . Es posible, además, hacer una prueba final a estos modelos estimados. Esto
-  se logra con:
+
+The repository already contains the final models, vectorizers and imputers used. Running this command will replace these files.
+
+## Test the model
+
+After training the model, it is also possible to test the different models. This is done by running the following command on the terminal:
   
    ```
 make test
 ```
 
-Finalmente, es posible generar un archivo **.csv** con las probabilidades
- estimadas para cada una de las denuncias en la base de datos de Google Drive
- . Para hacer esto, solo es necesario correr:
+## Store predictions
+
+Lastly, it is also possible to generate a **.csv** file with all the estimated probabilities for each judicial complaint in the database. This is done by running:
  
   ```
 make predictions
 ```
-Este comando se puede correr sin necesidad de haber re entrenado el modelo. Solo es necesario haber producido los datos (**make data**).
 
+This command can by run without training the model (because the final models are all saved in the repository). The only requirement is to run the  ***make data*** command.
 
-El proyecto está organizado con el formato que propone [Cookie Cutter Data
- Science](https://drivendata.github.io/cookiecutter-data-science/).
-
-Organización del proyecto 
+## Project structure
 ------------
+This project is organized based on the [Cookie Cutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) template
+
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
@@ -86,9 +89,7 @@ Organización del proyecto
     │   │   │                 predictions
     │   │   ├── predict_model.py
     │   │   └── train_model.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
+  
 
 --------
 
