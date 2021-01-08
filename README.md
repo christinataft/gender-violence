@@ -1,7 +1,7 @@
 gender-violence
 ==============================
 
-## Project Description 
+### Project description 
 
 This project aims to understand how the text from judicial complainst can be used to predict the presence of different types of gender violence in the complaint [This presentation (in Spanish)](reports/presentacion.pdf) explains the motivation, methodological approach and main results of the project. The [src](src) folder contains all the scripts for gathering the data, extracting the text, processing the text, crafting features and building models. The notebooks and scripts containing the most relevant models are:
   
@@ -11,7 +11,7 @@ This project aims to understand how the text from judicial complainst can be use
  
  The repository contains all the code necessary to replicate the models and results. **However, in order to actually run all the code it is necessary for the user to have a Google Service Account with Google's Drive API activated. The key to this account must be stored in the project's directory as "client_secret.json" .**
  
- ## Gather the data
+ ### Gather the data
 
  While on the project's directory, you should run the following command on the terminal in order to extract the data from Google Drive:
  
@@ -21,7 +21,7 @@ make data
 
 This process will take some time because it extracts the text from all the PDFs stored in the database.
 
-## Train the model
+### Train the model
 
 Once the data has been generated, it is possible to train several models to predict the presence and the type of gender violence. This is done by running the following command on the terminal:
 
@@ -31,7 +31,7 @@ make train
 
 The repository already contains the final models, vectorizers and imputers used. Running this command will replace these files.
 
-## Test the model
+### Test the model
 
 After training the model, it is also possible to test the different models. This is done by running the following command on the terminal:
   
@@ -39,7 +39,7 @@ After training the model, it is also possible to test the different models. This
 make test
 ```
 
-## Store predictions
+### Store predictions
 
 Lastly, it is also possible to generate a **.csv** file with all the estimated probabilities for each judicial complaint in the database. This is done by running:
  
@@ -49,8 +49,7 @@ make predictions
 
 This command can by run without training the model (because the final models are all saved in the repository). The only requirement is to run the  ***make data*** command.
 
-## Project structure
-------------
+### Project structure
 This project is organized based on the [Cookie Cutter Data Science](https://drivendata.github.io/cookiecutter-data-science/) template
 
 
