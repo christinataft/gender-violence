@@ -6,15 +6,14 @@ import unidecode
 
 def remove_symbols(text, symbols):
     """ Function that uses regular expressions to delete all symbols
-        given by the user from the tweets
+        given by the user from the text
 
     Args:
-        text:
-        symbols: list containing all the symbols to replace
+        text (str): raw text
+        symbols (list): list containing all the symbols to replace
 
     Returns:
-        clean text
-
+        clean text (str)
     """
 
     # generate regular expression
@@ -31,10 +30,14 @@ def remove_expressions(text, expressions):
 
 
 def text_preprocessor(text):
+    """ Function to execute a customized text preprocessing pipeline
+
+    Args:
+        text (str): raw text
+
+    Return:
+        processed text (str)
     """
-    """
-    # TODO: entender que texto debería ser guarado antes de preprocesar todo
-    #   con especial enfasis en los articulos penales
 
     # letters left alone
     expressions = ["x{2}","\s[a-z]\s", "\\ufeff1"]
@@ -62,10 +65,19 @@ def text_preprocessor(text):
 
 
 def spacy_tokenizer(text, nlp, stop_words):
-    """
+    """ Function to perform tokenization and lemmatizaion using Spacy
+
+    Args:
+        text (str): raw text
+        nlp: Spacy language model
+        stop_words (list): containing words to remove
+
+    Returns:
+        text represented as a list of lemmas
     """
 
-    # Creating our token object, which is used to create documents with linguistic annotations.
+    # Creating our token object, which is used to create documents with
+    # linguistic annotations
     tokens = nlp(text)
     # Lemmatizing each token
     lemmas = [word.lemma_ for word in tokens if word.lemma_ != "-PRON-"]
@@ -75,6 +87,15 @@ def spacy_tokenizer(text, nlp, stop_words):
     return lemmas
 
 class SpacyTokenizer(object):
+    """ A class used to tokennize and lemmatize text using Spacy.
+    Constructed to be part of an sklearn Pipeline
+
+    Attributes
+    ----------
+    nlp: Spacy language model
+    stop_words (list): containing words to remove from text
+
+    """
 
     def __init__(self):
         self.nlp = spacy.load("es_core_news_sm")
@@ -85,6 +106,20 @@ class SpacyTokenizer(object):
 
 
 class TextPreprocessor(TransformerMixin):
+    """ A class to apply a custom preprocessing pipeline.
+    Constructed to be part of an sklearn Pipeline
+
+    Methods
+    ----------
+    transform (X): applies a custom preprocessing function to all documents in
+    the list
+
+    fit(X):
+
+    get_params():
+
+    """
+
     def transform(self, X, **transform_params):
         return [text_preprocessor(text) for text in X]
 
